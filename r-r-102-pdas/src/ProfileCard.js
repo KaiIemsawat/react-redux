@@ -1,8 +1,17 @@
-function ProfileCard({ title, handle }) {
+function ProfileCard({ title, handle, image }) {
     return (
-        <div>
-            <div>Title : {title}</div>
-            <div>Handle : {handle}</div>
+        <div className="card">
+            <div className="card-image">
+                <figure className="image is-1by1">
+                    <img src={image} alt={title} />
+                </figure>
+            </div>
+            <div className="card-content">
+                <div className="media-content">
+                    <p className="title is-4">{title}</p>
+                    <p className="subtitle is-6">{handle}</p>
+                </div>
+            </div>
         </div>
     );
 }
