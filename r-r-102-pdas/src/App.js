@@ -9,7 +9,13 @@ import SiriImg from "./images/siri.png";
 function App() {
     return (
         <div>
-            <div>Personal Digital Assistantas</div>
+            <section className="hero is-primary">
+                <div className="hero-body">
+                    <p className="title">
+                        <div>Personal Digital Assistantas</div>
+                    </p>
+                </div>
+            </section>
 
             <div className="container">
                 <section className="section">
@@ -19,6 +25,7 @@ function App() {
                                 title="Alexa"
                                 handle="@alexa99"
                                 image={AlexaImg}
+                                description="Alexa bla bla blaaaaaaa blahhh bla bla baaaaaaaaahhhh"
                             />
                         </div>
                         <div className="column is-4">
@@ -26,6 +33,7 @@ function App() {
                                 title="Cortana"
                                 handle="@cortana32"
                                 image={CortanaImg}
+                                description="Cortana bla bla blaaaaaaa blahhh bla bla baaaaaaaaahhhh"
                             />
                         </div>
                         <div className="column is-4">
@@ -33,6 +41,7 @@ function App() {
                                 title="Siri"
                                 handle="@siri01"
                                 image={SiriImg}
+                                description="Siri bla bla blaaaaaaa blahhh bla bla baaaaaaaaahhhh"
                             />
                         </div>
                     </div>
