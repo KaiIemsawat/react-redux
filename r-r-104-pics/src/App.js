@@ -1,7 +1,14 @@
-import React from "react";
+import SearchBar from "./components/SearchBar";
 
 function App() {
-    return <div>App</div>;
+    const submitHandler = (term) => {
+        console.log("Searching for " + term);
+    };
+    return (
+        <div>
+            <SearchBar />
+        </div>
+    );
 }
 
 export default App;
