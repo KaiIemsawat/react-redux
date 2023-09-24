@@ -1,5 +1,10 @@
-function BookList() {
-    return <div>BookList</div>;
+import BookShow from "./BookShow";
+
+function BookList({ books }) {
+    const renderBooks = books.map((eaBook) => {
+        return <BookShow key={eaBook.id} book={eaBook} />;
+    });
+    return <div className="book-list">{renderBooks}</div>;
 }
 
 export default BookList;
