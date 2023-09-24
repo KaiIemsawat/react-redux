@@ -5,6 +5,16 @@ import BookList from "./components/BookList";
 function App() {
     const [books, setBooks] = useState([]);
 
+    const editBookById = (editingBookId, newTitle) => {
+        const updatedBooks = books.map((thisBook) => {
+            if (thisBook.id === editingBookId) {
+                return { ...thisBook, title: newTitle };
+            }
+            return thisBook;
+        });
+        setBooks(updatedBooks);
+    };
+
     const deleteBookById = (id) => {
         const updatedBooks = books.filter((eaBook) => {
             return eaBook.id !== id;
@@ -21,7 +31,11 @@ function App() {
 
     return (
         <div className="app">
-            <BookList books={books} onDelete={deleteBookById} />
+            <BookList
+                books={books}
+                onDelete={deleteBookById}
+                onEditBook={editBookById}
+            />
             <BookCreate onCreateBook={createBook} />
         </div>
     );
