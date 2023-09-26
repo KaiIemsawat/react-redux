@@ -1,13 +1,5 @@
-//Import BooksContext to use the created context.
-import BooksContext from "../context/books";
-
-// Then, import {useContext} to use useContext(BooksContext)
-import { useContext } from "react";
+import useBooksContext from "../hooks/use-books-context";
 import BookShow from "./BookShow";
-
-function useBooksContext() {
-    return useContext(BooksContext);
-}
 
 function BookList() {
     const { books } = useBooksContext();
