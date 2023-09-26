@@ -10,7 +10,7 @@ function App() {
     // Note below
     useEffect(() => {
         fetchBooks();
-    }, []);
+    }, [fetchBooks]);
 
     return (
         <div className="app">
