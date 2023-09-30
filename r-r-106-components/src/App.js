@@ -1,31 +1,25 @@
-import Accordion from "./components/Accordion";
+import { useState } from "react";
+import Dropdown from "./components/Dropdown";
 
 function App() {
-    const items = [
-        {
-            id: "dumy01",
-            label: "Can I use React on a Project",
-            content:
-                "Aliquam bibendum ac sem sit amet sollicitudin. Nam eu scelerisque ipsum. Etiam ante lorem, tempus et felis non, blandit ultrices sapien. Ut eu orci interdum, suscipit tortor a, interdum lectus. Curabitur porttitor tortor in luctus blandit. Fusce ullamcorper scelerisque bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris tortor mi, cursus a leo in, iaculis eleifend tellus. Quisque sit amet nisl tincidunt, gravida nisi ut, finibus nisl.",
-        },
-        {
-            id: "dumy02",
-            label: "Can I use CSS on a Project",
-            content:
-                "CAliquam bibendum ac sem sit amet sollicitudin. Nam eu scelerisque ipsum. Etiam ante lorem, tempus et felis non, blandit ultrices sapien. Ut eu orci interdum, suscipit tortor a, interdum lectus. Curabitur porttitor tortor in luctus blandit. Fusce ullamcorper scelerisque bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris tortor mi, cursus a leo in, iaculis eleifend tellus. Quisque sit amet nisl tincidunt, gravida nisi ut, finibus nisl.",
-        },
-        {
-            id: "dumy03",
-            label: "Can I use JS on a Project",
-            content:
-                "Aliquam bibendum ac sem sit amet sollicitudin. Nam eu scelerisque ipsum. Etiam ante lorem, tempus et felis non, blandit ultrices sapien. Ut eu orci interdum, suscipit tortor a, interdum lectus. Curabitur porttitor tortor in luctus blandit. Fusce ullamcorper scelerisque bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris tortor mi, cursus a leo in, iaculis eleifend tellus. Quisque sit amet nisl tincidunt, gravida nisi ut, finibus nisl.",
-        },
+    const [selection, setSelection] = useState(null);
+
+    const selectHandler = (option) => {
+        setSelection(option);
+    };
+
+    const options = [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue" },
     ];
 
     return (
-        <div>
-            <Accordion items={items} />
-        </div>
+        <Dropdown
+            options={options}
+            value={selection}
+            onChange={selectHandler}
+        />
     );
 }
 
