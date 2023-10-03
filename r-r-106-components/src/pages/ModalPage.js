@@ -8,12 +8,31 @@ function ModalPage() {
     const clickHandler = () => {
         setShowModal(true);
     };
+
+    const closeHandler = () => {
+        setShowModal(false);
+    };
+
+    const actionBar = (
+        <div>
+            <Button onClick={closeHandler} primary>
+                I Accept
+            </Button>
+        </div>
+    );
+
+    const modal = (
+        <Modal onClose={closeHandler} actionBar={actionBar}>
+            <p>Here is an important agreement</p>
+        </Modal>
+    );
+
     return (
         <div>
             <Button onClick={clickHandler} primary>
                 Open Modal
             </Button>
-            {showModal && <Modal />}
+            {showModal && modal}
         </div>
     );
 }
