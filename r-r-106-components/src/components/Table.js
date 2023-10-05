@@ -1,5 +1,10 @@
+import { Fragment } from "react"; // Used when need an HTML element inside some of the table elements such as <tr>
+
 function Table({ data, config, keyFn }) {
     const renderedHeaders = config.map((column) => {
+        if (column.header) {
+            return <Fragment key={column.label}>{column.header()}</Fragment>;
+        }
         return <th key={column.label}>{column.label}</th>;
     });
 
