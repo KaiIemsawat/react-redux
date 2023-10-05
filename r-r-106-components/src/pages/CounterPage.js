@@ -1,25 +1,27 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
+import useCounter from "../hooks/useCounter";
 
 /* create custom hook */
-function useSomething(initialCount) {
-    // <--- take initialCount but not as agrument not props object
+/* the function then moved to hooks/useCounter.js */
+// function useCounter(initialCount) {
+//     // <--- take initialCount but not as agrument not props object
 
-    const [count, setCount] = useState(initialCount);
+//     const [count, setCount] = useState(initialCount);
 
-    useEffect(() => {
-        console.log(count);
-    }, [count]);
+//     useEffect(() => {
+//         console.log(count);
+//     }, [count]);
 
-    const clickHandler = () => {
-        setCount(count + 1);
-    };
+//     const clickHandler = () => {
+//         setCount(count + 1);
+//     };
 
-    return {
-        count,
-        clickHandler,
-    };
-}
+//     return {
+//         count,
+//         clickHandler,
+//     };
+// }
 
 function CounterPage({ initialCount }) {
     /* Move these blocks of code to the custom hook */
@@ -34,7 +36,7 @@ function CounterPage({ initialCount }) {
     // };
 
     // destruct object from the custom hook
-    const { count, clickHandler } = useSomething(initialCount);
+    const { count, clickHandler } = useCounter(initialCount);
 
     return (
         <div>
