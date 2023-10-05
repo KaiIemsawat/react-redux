@@ -1,5 +1,4 @@
 import SortableTable from "../components/SortableTable";
-import Table from "../components/Table";
 
 import React from "react";
 
