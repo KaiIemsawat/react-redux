@@ -9,13 +9,13 @@ function useCounter(initialCount) {
         console.log(count);
     }, [count]);
 
-    const clickHandler = () => {
+    const increment = () => {
         setCount(count + 1);
     };
 
     return {
         count,
-        clickHandler,
+        increment,
     };
 }
 
