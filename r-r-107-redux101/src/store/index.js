@@ -31,8 +31,7 @@ const store = configureStore({
     // },
 });
 
-console.log(songsSlice.actions.addSong("Some Songs..")); // songsSlice.actions <-- action creator
-
+// console.log(songsSlice.actions.addSong("Some Songs..")); // songsSlice.actions <-- action creator
 // console.log(store);
 
 const startingState = store.getState();
