@@ -1,4 +1,6 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice, createAction } from "@reduxjs/toolkit";
+
+export const resetAll = createAction("app/resetAll"); // "app/resetAll" <-- made up name
 
 const moviesSlice = createSlice({
     name: "movie",
@@ -15,9 +17,15 @@ const moviesSlice = createSlice({
             const index = state.indexOf(action.payload);
             state.splice(index, 1);
         },
-        reset(state, action) {
-            return []; // will mutate state as []. Do not use state = [];. It will not work
-        },
+        // REMOVED for another approach for reset function
+        // reset(state, action) {
+        //     return []; // will mutate state as []. Do not use state = [];. It will not work
+        // },
+    },
+    extraReducers(builder) {
+        builder.addCase(resetAll, (state, action) => {
+            return [];
+        });
     },
 });
 
@@ -42,8 +50,14 @@ const songsSlice = createSlice({
             state.splice(index, 1); // <-- '1' means that it will remove only 1 item from that index
         },
     },
+    // REMOVED for another approach for reset function
+    // extraReducers(builder) {
+    //     builder.addCase(moviesSlice.actions.reset, (state, action) => {
+    //         return [];
+    //     });
+    // },
     extraReducers(builder) {
-        builder.addCase(moviesSlice.actions.reset, (state, action) => {
+        builder.addCase(resetAll, (state, action) => {
             return [];
         });
     },
@@ -70,4 +84,8 @@ console.log(store.getState());
 
 export { store };
 export const { addSong, removeSong } = songsSlice.actions;
-export const { addMovie, removeMovie, reset } = moviesSlice.actions;
+export const {
+    addMovie,
+    removeMovie,
+    // reset // REMOVED for another approach for reset function
+} = moviesSlice.actions;
