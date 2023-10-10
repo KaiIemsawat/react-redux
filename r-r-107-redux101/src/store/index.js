@@ -15,6 +15,9 @@ const moviesSlice = createSlice({
             const index = state.indexOf(action.payload);
             state.splice(index, 1);
         },
+        reset(state, action) {
+            return []; // will mutate state as []. Do not use state = [];. It will not work
+        },
     },
 });
 
@@ -39,6 +42,12 @@ const songsSlice = createSlice({
             state.splice(index, 1); // <-- '1' means that it will remove only 1 item from that index
         },
     },
+    extraReducers(builder) {
+        builder.addCase("movie/reset", (state, action) => {
+            // "movie/reset" come from 'name: "movie"' + / + 'reset(state, action)'
+            return [];
+        });
+    },
 });
 
 const store = configureStore({
@@ -62,4 +71,4 @@ console.log(store.getState());
 
 export { store };
 export const { addSong, removeSong } = songsSlice.actions;
-export const { addMovie, removeMovie } = moviesSlice.actions;
+export const { addMovie, removeMovie, reset } = moviesSlice.actions;
