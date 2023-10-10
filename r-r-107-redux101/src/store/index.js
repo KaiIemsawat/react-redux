@@ -7,12 +7,18 @@ const songsSlice = createSlice({
         // <- combination of multiple 'reducer's
         // reducers with 's'
         addSong(state, action) {
+            console.log(
+                state.length,
+                "this 'state' is in addSong in reduces in songsSlice // to clarify the different of 'state'"
+            );
             // This state is not the big state object in the store.
             // It is the piece of state managed by the reducer
             state.push(action.payload);
         },
         removeSong(state, action) {
-            //
+            // action.payload === string, the song needed to remove
+            const index = state.indexOf(action.payload);
+            state.splice(index, 1); // <-- '1' means that it will remove only 1 item from that index
         },
     },
 });
@@ -34,19 +40,5 @@ const store = configureStore({
 // console.log(songsSlice.actions.addSong("Some Songs..")); // songsSlice.actions <-- action creator
 // console.log(store);
 
-const startingState = store.getState();
-console.log(JSON.stringify(startingState));
-
-store.dispatch(
-    // {
-    // type: "song/addSong", // come from name: "song" and reducers:{addSong(){}} -> song + / + addSong
-    // payload: "New Song!!",
-    // }
-
-    // later on, switch to
-
-    songsSlice.actions.addSong("Some Songs!!!")
-);
-
-const finalState = store.getState();
-console.log(JSON.stringify(finalState));
+export { store };
+export const { addSong, removeSong } = songsSlice.actions;
