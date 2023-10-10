@@ -5,10 +5,10 @@ import { addSong, removeSong } from "../store";
 function SongPlaylist() {
     const dispatch = useDispatch();
     const songPlaylist = useSelector((state) => {
-        console.log(
-            state,
-            "this 'state' is in songPlaylist // to clarify the different of 'state'"
-        );
+        // console.log(
+        //     state,
+        //     "this 'state' is in songPlaylist // to clarify the different of 'state'"
+        // );
         return state.songs;
     });
 
