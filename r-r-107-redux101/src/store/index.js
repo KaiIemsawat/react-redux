@@ -1,91 +1,15 @@
 import { configureStore, createSlice, createAction } from "@reduxjs/toolkit";
-
-export const resetAll = createAction("app/resetAll"); // "app/resetAll" <-- made up name
-
-const moviesSlice = createSlice({
-    name: "movie",
-    initialState: [],
-    reducers: {
-        addMovie(state, action) {
-            state.push(action.payload);
-            // console.log(
-            //     state.length,
-            //     "this 'state' is in addMovie in reduces in moviesSlice // to clarify the different of 'state'"
-            // );
-        },
-        removeMovie(state, action) {
-            const index = state.indexOf(action.payload);
-            state.splice(index, 1);
-        },
-        // REMOVED for another approach for reset function
-        // reset(state, action) {
-        //     return []; // will mutate state as []. Do not use state = [];. It will not work
-        // },
-    },
-    extraReducers(builder) {
-        builder.addCase(resetAll, (state, action) => {
-            return [];
-        });
-    },
-});
-
-const songsSlice = createSlice({
-    name: "song",
-    initialState: [],
-    reducers: {
-        // <- combination of multiple 'reducer's
-        // reducers with 's'
-        addSong(state, action) {
-            state.push(action.payload);
-            // console.log(
-            //     state.length,
-            //     "this 'state' is in addSong in reduces in songsSlice // to clarify the different of 'state'"
-            // );
-            // This state is not the big state object in the store.
-            // It is the piece of state managed by the reducer
-        },
-        removeSong(state, action) {
-            // action.payload === string, the song needed to remove
-            const index = state.indexOf(action.payload);
-            state.splice(index, 1); // <-- '1' means that it will remove only 1 item from that index
-        },
-    },
-    // REMOVED for another approach for reset function
-    // extraReducers(builder) {
-    //     builder.addCase(moviesSlice.actions.reset, (state, action) => {
-    //         return [];
-    //     });
-    // },
-    extraReducers(builder) {
-        builder.addCase(resetAll, (state, action) => {
-            return [];
-        });
-    },
-});
+import { songsReducer, addSong, removeSong } from "./slices/songsSlice";
+import { moviesReducer, addMovie, removeMovie } from "./slices/moviesSlice";
+import { resetAll } from "./action";
 
 const store = configureStore({
     reducer: {
-        // 'reducer' without 's'
-        songs: songsSlice.reducer, // 'songsSlice' <- get this slices 'initialState' property
-        // With the line above we create a 'state' of songs as -> {songs: []}
-        // Since 'initialState: []' was set as empty [], so that songs has initial state of empty []
-        // Does not have to be [], it could be an object, a string, etc
-        movies: moviesSlice.reducer,
+        songs: songsReducer,
+        movies: moviesReducer,
     },
-    // -- This object determines what keys our 'big' state object has --
-    // reducer: {
-    //     songs: songsSlice.reducer,
-    // },
 });
 
-// console.log(songsSlice.actions.addSong("Some Songs..")); // songsSlice.actions <-- action creator
-// console.log(store);
 console.log(store.getState());
 
-export { store };
-export const { addSong, removeSong } = songsSlice.actions;
-export const {
-    addMovie,
-    removeMovie,
-    // reset // REMOVED for another approach for reset function
-} = moviesSlice.actions;
+export { store, addSong, removeSong, addMovie, removeMovie, resetAll };
