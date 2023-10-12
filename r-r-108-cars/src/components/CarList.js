@@ -15,7 +15,7 @@ function CarList() {
         return (
             <div key={car.id} className="panel">
                 <p>
-                    {car.name} - $ {car.cost}
+                    {car.name} - ${car.cost}
                 </p>
                 <button
                     className="button is-danger"
