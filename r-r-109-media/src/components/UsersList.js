@@ -1,35 +1,42 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUsers, addUser } from "../store";
-import Skeleton from "./Skeleton";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useThunk } from "../hooks/useThunk";
+import { addUser, fetchUsers } from "../store";
 import Button from "./Button";
+import Skeleton from "./Skeleton";
 
 function UsersList() {
-    const [isLoadingUsers, setIsLoadingUsers] = useState(false);
-    const [loadingUsersError, setLoadingUsersError] = useState(null);
-    const [isCreatingUser, setIsCreatingUser] = useState(false);
-    const [creatingUserError, setCreatingUserError] = useState(null);
+    const [doFetchUsers, isLoadingUsers, loadingUsersError] =
+        useThunk(fetchUsers);
+    // const [isLoadingUsers, setIsLoadingUsers] = useState(false);
+    // const [loadingUsersError, setLoadingUsersError] = useState(null);
 
-    const dispatch = useDispatch();
+    const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUser);
+    // const [isCreatingUser, setIsCreatingUser] = useState(false);
+    // const [creatingUserError, setCreatingUserError] = useState(null);
+
+    // const dispatch = useDispatch();
     const { data } = useSelector((state) => {
-        //                                    this 'state' <-- {data: [],isLoading: false,error: null} from usersSlice.js
+        //                  this 'state' <-- {data: [],isLoading: false,error: null} from usersSlice.js
         return state.users;
     });
 
     useEffect(() => {
-        setIsLoadingUsers(true);
-        dispatch(fetchUsers())
-            .unwrap()
-            .catch((error) => setLoadingUsersError(error))
-            .finally(() => setIsLoadingUsers(false));
-    }, [dispatch]);
+        doFetchUsers();
+        // setIsLoadingUsers(true);
+        // dispatch(fetchUsers())
+        //     .unwrap()
+        //     .catch((error) => setLoadingUsersError(error))
+        //     .finally(() => setIsLoadingUsers(false));
+    }, [doFetchUsers]);
 
     const userAddHandler = () => {
-        setIsCreatingUser(true);
-        dispatch(addUser())
-            .unwrap()
-            .catch((error) => setCreatingUserError(error))
-            .finally(() => setIsCreatingUser(false));
+        doCreateUser();
+        // setIsCreatingUser(true);
+        // dispatch(addUser())
+        //     .unwrap()
+        //     .catch((error) => setCreatingUserError(error))
+        //     .finally(() => setIsCreatingUser(false));
     };
 
     if (isLoadingUsers) {
