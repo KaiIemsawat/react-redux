@@ -6,7 +6,7 @@ const removeUser = createAsyncThunk("users/remove", async (user) => {
         `http://localhost:3005/users/${user.id}`
     );
 
-    return response.data;
+    return user;
 });
 
 export { removeUser };
