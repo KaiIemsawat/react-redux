@@ -1,32 +1,42 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Zukkii"
-        },
-        {
-            "name": "Blake Lowe",
-            "id": 2
-        },
-        {
-            "name": "Francis Klocko",
-            "id": 3
-        },
-        {
-            "name": "Brent Schimmel",
-            "id": 5
-        },
-        {
-            "name": "Marjorie Lebsack",
-            "id": 6
-        }
-    ],
-    "albums": [
-        {
-            "id": 8,
-            "title": "hiking trip",
-            "userId": 2
-        }
-    ],
-    "photos": []
+  "users": [
+    {
+      "id": 1,
+      "name": "Zukkii"
+    },
+    {
+      "name": "Blake Lowe",
+      "id": 2
+    },
+    {
+      "name": "Francis Klocko",
+      "id": 3
+    },
+    {
+      "name": "Brent Schimmel",
+      "id": 5
+    },
+    {
+      "name": "Marjorie Lebsack",
+      "id": 6
+    }
+  ],
+  "albums": [
+    {
+      "id": 8,
+      "title": "hiking trip",
+      "userId": 2
+    },
+    {
+      "userId": 2,
+      "title": "Gorgeous Soft Towels",
+      "id": 9
+    },
+    {
+      "userId": 2,
+      "title": "Elegant Fresh Chair",
+      "id": 10
+    }
+  ],
+  "photos": []
 }

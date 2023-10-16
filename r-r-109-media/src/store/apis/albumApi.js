@@ -37,5 +37,8 @@ const albumsApi = createApi({
     },
 });
 
-export const { useFetchAlbumsQuery } = albumsApi; // 'useFetchAlbumsQuery' comes from use + fetchAlbums (from above) + Query
+export const {
+    useFetchAlbumsQuery, // For example, 'useFetchAlbumsQuery' comes from use + fetchAlbums (from above) + query. 'query' comes from 'fetchAlbums: builder.query'
+    useAddAlbumMutation, // So, 'useAddAlbumMutation' comes from use + addAlbum (from above) + mutation. 'mutation' comes from 'addAlbum: builder.mutation'
+} = albumsApi;
 export { albumsApi };
