@@ -21,6 +21,14 @@ const albumsApi = createApi({
     }),
     endpoints(builder) {
         return {
+            removeAlbum: builder.mutation({
+                query: (album) => {
+                    return {
+                        url: `/albums/${album.id}`,
+                        method: "DELETE",
+                    };
+                },
+            }),
             addAlbum: builder.mutation({
                 invalidatesTags: (result, error, user) => {
                     // whatever we put in 'const addAlbumHandler = () => {addAlbum(user);};' in AlbumList.js is what in the third argument
@@ -61,6 +69,7 @@ const albumsApi = createApi({
 export const {
     useFetchAlbumsQuery, // For example, 'useFetchAlbumsQuery' comes from use + fetchAlbums (from above) + query. 'query' comes from 'fetchAlbums: builder.query'
     useAddAlbumMutation, // So, 'useAddAlbumMutation' comes from use + addAlbum (from above) + mutation. 'mutation' comes from 'addAlbum: builder.mutation'
+    useRemoveAlbumMutation,
 } = albumsApi;
 export { albumsApi };
 
