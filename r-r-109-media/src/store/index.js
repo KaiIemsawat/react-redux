@@ -13,6 +13,9 @@ export const store = configureStore({
     },
 });
 
+// TEMPORARY
+// window.store = store; // use 'store.getState()' in browser console to see details
+
 setupListeners(store.dispatch);
 
 export * from "./thunks/fetchUser";

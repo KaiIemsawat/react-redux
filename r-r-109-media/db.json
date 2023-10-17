@@ -5,10 +5,6 @@
       "name": "Zukkii"
     },
     {
-      "name": "Blake Lowe",
-      "id": 2
-    },
-    {
       "name": "Francis Klocko",
       "id": 3
     },
@@ -23,19 +19,24 @@
   ],
   "albums": [
     {
-      "id": 8,
-      "title": "hiking trip",
-      "userId": 2
+      "userId": 3,
+      "title": "Recycled Rubber Chair",
+      "id": 14
     },
     {
-      "userId": 2,
-      "title": "Gorgeous Soft Towels",
-      "id": 9
+      "userId": 3,
+      "title": "Awesome Granite Shirt",
+      "id": 15
     },
     {
-      "userId": 2,
-      "title": "Elegant Fresh Chair",
-      "id": 10
+      "userId": 5,
+      "title": "Refined Plastic Fish",
+      "id": 16
+    },
+    {
+      "userId": 3,
+      "title": "Rustic Steel Shoes",
+      "id": 17
     }
   ],
   "photos": []

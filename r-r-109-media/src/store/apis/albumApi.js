@@ -9,6 +9,10 @@ const albumsApi = createApi({
     endpoints(builder) {
         return {
             addAlbum: builder.mutation({
+                invalidatesTags: (result, error, user) => {
+                    // whatever we put in 'const addAlbumHandler = () => {addAlbum(user);};' in AlbumList.js is what in the third argument
+                    return [{ type: "Album", id: user.id }]; // < general practice, Using capital and is singular. Also need to be same as *** below
+                },
                 query: (user) => {
                     return {
                         url: "/albums",
@@ -22,6 +26,10 @@ const albumsApi = createApi({
             }),
             fetchAlbums: builder.query({
                 // 'fetchAlbums' -->  'useFetchAlbumsQuery' (custom hook)
+                providesTags: (result, error, user) => {
+                    //  'user' may be call 'arg' in som documents
+                    return [{ type: "Album", id: user.id }]; // < For 'Album', general practice, Using capital and is singular. Also need to be same as *** above
+                },
                 query: (user) => {
                     // Need to pass an argument to specify which (in this case) 'user' 's albums we are looking for
                     return {
@@ -42,3 +50,15 @@ export const {
     useAddAlbumMutation, // So, 'useAddAlbumMutation' comes from use + addAlbum (from above) + mutation. 'mutation' comes from 'addAlbum: builder.mutation'
 } = albumsApi;
 export { albumsApi };
+
+/* 
+    queries VS mutations
+
+    QUERY
+    const { data, error, isLoading } = useFetchAlbumsQuery(user);
+    queries run immediately when the component is displayed on the screen (by default)
+
+    MUTATION
+    const [addAlbum, result] = useAddAlbumMutation();
+    mutations give us a function to run when we want to change some data
+*/

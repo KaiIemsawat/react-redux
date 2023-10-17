@@ -9,6 +9,7 @@ function AlbumList({ user }) {
     // USE A LOT -- data, error (if no error we will not see), refetch, isFetching, isLoading
 
     const [addAlbum, result] = useAddAlbumMutation();
+    // console.log(result); // use this to check the data receive when click on expand and add album
 
     const addAlbumHandler = () => {
         addAlbum(user);
