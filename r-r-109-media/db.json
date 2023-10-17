@@ -19,11 +19,6 @@
   ],
   "albums": [
     {
-      "userId": 3,
-      "title": "Recycled Rubber Chair",
-      "id": 14
-    },
-    {
       "userId": 5,
       "title": "Refined Plastic Fish",
       "id": 16
@@ -37,18 +32,68 @@
       "userId": 5,
       "title": "Unbranded Fresh Mouse",
       "id": 19
+    },
+    {
+      "userId": 3,
+      "title": "Incredible Steel Mouse",
+      "id": 20
     }
   ],
   "photos": [
     {
-      "albumId": 14,
-      "url": "https://picsum.photos/seed/qLbaJJv/640/480",
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/n9CFtFb3VI/640/480",
       "id": 1
     },
     {
-      "albumId": 14,
-      "url": "https://loremflickr.com/640/480?lock=8017302370910208",
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/LGt0z9zl/640/480",
       "id": 2
+    },
+    {
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/UYjKW/640/480",
+      "id": 3
+    },
+    {
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/BIDwSA5efq/640/480",
+      "id": 4
+    },
+    {
+      "albumId": 17,
+      "url": "https://loremflickr.com/640/480?lock=7289043607879680",
+      "id": 5
+    },
+    {
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/FRcQDSF/640/480",
+      "id": 6
+    },
+    {
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/9l2eA2t0/640/480",
+      "id": 7
+    },
+    {
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/MPOgY/640/480",
+      "id": 8
+    },
+    {
+      "albumId": 17,
+      "url": "https://loremflickr.com/640/480?lock=4820785816403968",
+      "id": 9
+    },
+    {
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/64trLAg/640/480",
+      "id": 10
+    },
+    {
+      "albumId": 17,
+      "url": "https://picsum.photos/seed/Yqsp7cz7/640/480",
+      "id": 11
     }
   ]
 }

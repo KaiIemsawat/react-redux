@@ -26,6 +26,7 @@ const albumsApi = createApi({
                 invalidatesTags: (result, error, album) => {
                     console.log(album);
                     return [{ type: "Album", id: album.id }]; // < -- 'Album' general practice, Using capital and is singular. Also need to be same as *** below
+                    // return []
                 },
                 query: (album) => {
                     return {
@@ -38,6 +39,7 @@ const albumsApi = createApi({
                 invalidatesTags: (result, error, user) => {
                     // whatever we put in 'const addAlbumHandler = () => {addAlbum(user);};' in AlbumList.js is what in the third argument
                     return [{ type: "UserAlbums", id: user.id }]; // < -- 'UserAlbums' general practice, Using capital and is singular. Also need to be same as *** below
+                    // return []
                 },
                 query: (user) => {
                     return {
