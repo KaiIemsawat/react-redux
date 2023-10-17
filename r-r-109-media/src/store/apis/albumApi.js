@@ -9,8 +9,9 @@ const pause = (duration) => {
 };
 
 const albumsApi = createApi({
-    reducerPath: "albums",
+    reducerPath: "albums", // <-- this is where reducer is assigned inside global state object. In general, the name will be "'thisPart'Api" from above line
     baseQuery: fetchBaseQuery({
+        // need to import 'fetchBaseQuery'
         baseUrl: "http://localhost:3005",
         fetchFn: async (...args) => {
             //
@@ -24,7 +25,7 @@ const albumsApi = createApi({
             removeAlbum: builder.mutation({
                 invalidatesTags: (result, error, album) => {
                     console.log(album);
-                    return [{ type: "Album", id: album.id }];
+                    return [{ type: "Album", id: album.id }]; // < -- 'Album' general practice, Using capital and is singular. Also need to be same as *** below
                 },
                 query: (album) => {
                     return {
@@ -36,7 +37,7 @@ const albumsApi = createApi({
             addAlbum: builder.mutation({
                 invalidatesTags: (result, error, user) => {
                     // whatever we put in 'const addAlbumHandler = () => {addAlbum(user);};' in AlbumList.js is what in the third argument
-                    return [{ type: "UserAlbums", id: user.id }]; // < general practice, Using capital and is singular. Also need to be same as *** below
+                    return [{ type: "UserAlbums", id: user.id }]; // < -- 'UserAlbums' general practice, Using capital and is singular. Also need to be same as *** below
                 },
                 query: (user) => {
                     return {
@@ -55,7 +56,7 @@ const albumsApi = createApi({
                     //  'user' may be call 'arg' in som documents
 
                     const tags = result.map((album) => {
-                        return { type: "Album", id: album.id };
+                        return { type: "Album", id: album.id }; // < For 'Album', general practice, Using capital and is singular. Also need to be same as *** above
                     });
                     tags.push({ type: "UserAlbums", id: user.id }); // < For 'UserAlbums', general practice, Using capital and is singular. Also need to be same as *** above
                     return tags;

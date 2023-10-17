@@ -34,10 +34,21 @@
       "id": 17
     },
     {
-      "userId": 3,
-      "title": "Tasty Cotton Keyboard",
-      "id": 18
+      "userId": 5,
+      "title": "Unbranded Fresh Mouse",
+      "id": 19
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "albumId": 14,
+      "url": "https://picsum.photos/seed/qLbaJJv/640/480",
+      "id": 1
+    },
+    {
+      "albumId": 14,
+      "url": "https://loremflickr.com/640/480?lock=8017302370910208",
+      "id": 2
+    }
+  ]
 }
