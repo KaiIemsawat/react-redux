@@ -5,7 +5,7 @@ import Button from "./Button";
 import AlbumsListItem from "./AlbumsListItem";
 
 function AlbumList({ user }) {
-    const { data, error, isLoading } = useFetchAlbumsQuery(user);
+    const { data, error, isFetching } = useFetchAlbumsQuery(user);
     // console.log(useFetchAlbumsQuery(user));
     // USE A LOT -- data, error (if no error we will not see), refetch, isFetching, isLoading
 
@@ -17,7 +17,7 @@ function AlbumList({ user }) {
     };
 
     let content;
-    if (isLoading) {
+    if (isFetching) {
         content = <Skeleton className="h-10 w-full" times={3} />;
     } else if (error) {
         content = <div>Error loading Albums....</div>;

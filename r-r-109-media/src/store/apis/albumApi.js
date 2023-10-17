@@ -24,7 +24,7 @@ const albumsApi = createApi({
             removeAlbum: builder.mutation({
                 invalidatesTags: (result, error, album) => {
                     console.log(album);
-                    return [{ type: "Album", id: album.userId }];
+                    return [{ type: "Album", id: album.id }];
                 },
                 query: (album) => {
                     return {
@@ -36,7 +36,7 @@ const albumsApi = createApi({
             addAlbum: builder.mutation({
                 invalidatesTags: (result, error, user) => {
                     // whatever we put in 'const addAlbumHandler = () => {addAlbum(user);};' in AlbumList.js is what in the third argument
-                    return [{ type: "Album", id: user.id }]; // < general practice, Using capital and is singular. Also need to be same as *** below
+                    return [{ type: "UserAlbums", id: user.id }]; // < general practice, Using capital and is singular. Also need to be same as *** below
                 },
                 query: (user) => {
                     return {
@@ -53,7 +53,12 @@ const albumsApi = createApi({
                 // 'fetchAlbums' -->  'useFetchAlbumsQuery' (custom hook)
                 providesTags: (result, error, user) => {
                     //  'user' may be call 'arg' in som documents
-                    return [{ type: "Album", id: user.id }]; // < For 'Album', general practice, Using capital and is singular. Also need to be same as *** above
+
+                    const tags = result.map((album) => {
+                        return { type: "Album", id: album.id };
+                    });
+                    tags.push({ type: "UserAlbums", id: user.id }); // < For 'UserAlbums', general practice, Using capital and is singular. Also need to be same as *** above
+                    return tags;
                 },
                 query: (user) => {
                     // Need to pass an argument to specify which (in this case) 'user' 's albums we are looking for
